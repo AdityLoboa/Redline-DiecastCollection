@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redline Garage — Collect. Bid. Drive.</title>
+<link rel="icon" type="image/png" href="Source\faviconcar.ico">
+<link rel="stylesheet" href="A3style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="Sub.js"></script>
+</head>
+
+<body>
+
+
+
+<!-- =====================================================
+     FULL-SCREEN SCROLL VIDEO BACKGROUND
+===================================================== -->
+
+<div class="site-video-background">
+    <video id="scrollVideo" muted playsinline preload="auto" aria-hidden="true">
+        <source src="Source/MF1.mp4" type="video/mp4">
+    </video>
+    <div class="site-video-overlay"></div>
+    <div class="video-vignette"></div>
+    <div class="video-grid"></div>
+    <div class="video-scanline"></div>
+</div>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<header class="site-header">
+    <a href="#home" class="site-logo">
+        <span class="site-logo-mark">RG</span>
+        <span>REDLINE <strong>GARAGE</strong></span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation">☰</button>
+
+    <nav id="mainNav">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#collection" class="nav-link">Collection</a>
+        <a href="#auction" class="nav-link">Auction</a>
+        <a href="#add" class="nav-link">Add Your Car</a>
+        <a href="#game" class="nav-link">Game</a>
+        <a href="#account" class="nav-link">Account</a>
+    </nav>
+</header>
+
+<main>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section id="home" class="page-section hero">
+    <div class="hero-content">
+        <p class="eyebrow">COLLECTIBLE AUTOMOTIVE MARKETPLACE</p>
+        <h1>Built for the cars<br><span>you never forget.</span></h1>
+        <p class="hero-description">
+            Discover, collect, auction and play with your favourite collectible rides in one digital garage.
+        </p>
+        <div class="button-row">
+            <a href="#collection" class="btn primary">Explore Collection</a>
+            <a href="#auction" class="btn secondary">View Auctions</a>
+        </div>
+    </div>
+
+    <article class="hero-car-card">
+        <div class="hero-car-image">
+            <img src="Source/Nissan GT-R.jpg" alt="Featured Nissan GT-R R35" loading="lazy">
+            <span class="featured-label">FEATURED</span>
+        </div>
+        <div class="hero-car-info">
+            <div>
+                <span class="small-label">FEATURED RIDE</span>
+                <h2>Nissan GT-R R35</h2>
+            </div>
+            <strong>500 HP</strong>
+        </div>
+    </article>
+</section>
+
+<!-- =========================
+     DASHBOARD
+========================= -->
+
+<section class="page-section dashboard-section">
+    <div class="section-heading">
+        <div>
+            <p class="eyebrow">AT A GLANCE</p>
+            <h2>The garage dashboard</h2>
+        </div>
+    </div>
+
+    <div class="stats-grid">
+        <article class="stat-card">
+            <span>COLLECTED</span>
+            <strong id="statCollected">0</strong>
+            <small>Cars in your garage</small>
+        </article>
+
+        <article class="stat-card">
+            <span>LIVE AUCTIONS</span>
+            <strong id="statAuctions">0</strong>
+            <small>Car's available now</small>
+        </article>
+
+        <article class="stat-card">
+            <span>GARAGE VALUE</span>
+            <strong id="statValue">₹0</strong>
+            <small>Estimated collection value</small>
+        </article>
+
+        <article class="stat-card">
+            <span>COLLECTOR RANK</span>
+            <strong id="statBids">0</strong>
+            <small>Bid activity</small>
+        </article>
+    </div>
+</section>
+
+<!-- =========================
+     COLLECTION
+========================= -->
+
+<section id="collection" class="page-section">
+    <div class="section-heading">
+        <div>
+            <p class="eyebrow">YOUR GARAGE</p>
+            <h2>Your Featured collection</h2>
+        </div>
+        <a href="#collection" class="text-link">View all →</a>
+    </div>
+
+    <div id="collectionGrid" class="car-grid">
+        <!-- Dynamically populated by JavaScript -->
+    </div>
+</section>
+
+<!-- =========================
+     AUCTIONS
+========================= -->
+
+<section id="auction" class="page-section">
+    <div class="section-heading">
+        <div>
+            <p class="eyebrow">LIVE MARKET</p>
+            <h2>Current auctions</h2>
+        </div>
+    </div>
+
+    <div id="auctionGrid" class="auction-grid">
+        <!-- Dynamically populated by JavaScript -->
+    </div>
+</section>
+
+<!-- =========================
+     ADD YOUR RIDE
+========================= -->
+
+<section id="add" class="page-section">
+    <div class="section-heading">
+        <div>
+            <p class="eyebrow">EXPAND YOUR GARAGE</p>
+            <h2>Add Your Car</h2>
+        </div>
+    </div>
+
+    <form class="form-card" id="rideForm">
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Car Name <input type="text" name="name" placeholder="Porsche 911 GT3" required></label>
+            </div>
+            <div class="form-group">
+                <label>Manufacturer <input type="text" name="manufacturer" placeholder="Porsche" required></label>
+            </div>
+            <div class="form-group">
+                <label>Model <input type="text" name="model" placeholder="911 GT3"></label>
+            </div>
+            <div class="form-group">
+                <label>Year <input type="number" name="year" placeholder="2026"></label>
+            </div>
+            <div class="form-group">
+                <label>Horsepower <input type="number" name="horsepower" placeholder="502"></label>
+            </div>
+            <div class="form-group">
+                <label>Value <input type="number" name="value" placeholder="2500"></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Description <textarea name="description" rows="4" placeholder="Tell us about this ride..."></textarea></label>
+        </div>
+
+        <div class="form-group">
+            <label>Car Image <input id="rideImage" type="file" accept="image/*" required></label>
+        </div>
+
+        <div class="auction-create-extra form-group">
+            <label>Starting Bid <input id="auctionStart" type="number" min="1" step="1" placeholder="2500"></label>
+            <label>Auction Duration <select id="auctionDuration"><option value="30">30 minutes</option><option value="60" selected>1 hour</option><option value="180">3 hours</option><option value="1440">24 hours</option></select></label>
+        </div>
+
+        <div class="upload-preview" id="uploadPreview">
+            <div class="preview-placeholder">
+                <strong>IMAGE PREVIEW</strong>
+                <span>Your uploaded image will appear here</span>
+            </div>
+        </div>
+
+        <div class="form-actions">
+  <button class="btn primary" type="submit" name="mode" value="collection">Add to Collection</button>
+  <button class="btn secondary" type="submit" name="mode" value="auction">Create Live Auction</button>
+</div>
+    </form>
+</section>
+
+<!-- =========================
+     GAME
+========================= -->
+
+<section id="game" class="page-section">
+    <div class="section-heading">
+        <div>
+            <p class="eyebrow">GARAGE ARCADE</p>
+            <h2>Monster Truck Stunt</h2>
+        </div>
+    </div>
+
+    <div class="game-container monster-truck-container">
+        <!-- Monster Truck Game Embedded -->
+        <div id="gameEmbed" class="monster-truck-embed">
+            <div class="game-wrap">
+                <div id="mainMenu" class="menu">
+                    <div class="menu-box">
+                        <div class="logo">
+                            MONSTER
+                            <span>TRUCK</span>
+                        </div>
+                        <p class="subtitle">STUNT RACING</p>
+                        <button id="startButton" class="main-button">START</button>
+                        <p class="controls">
+                            SPACE / ↑ = Jump<br>
+                            ← → = Flip<br>
+                            Perform tricks in the air!
+                        </p>
+                    </div>
+                </div>
+
+                <div id="carMenu" class="menu hidden">
+                    <div class="garage">
+                        <h1>CHOOSE YOUR TRUCK</h1>
+                        <div class="car-list">
+                            <div class="car-card selected" data-car="red">
+                                <div class="car-preview red-car">🚙</div>
+                                <h2>FIRE BEAST</h2>
+                                <p>Balanced</p>
+                                <button class="select-car">SELECT</button>
+                            </div>
+                            <div class="car-card" data-car="blue">
+                                <div class="car-preview blue-car">🚙</div>
+                                <h2>THUNDER</h2>
+                                <p>Faster</p>
+                                <button class="select-car">SELECT</button>
+                            </div>
+                            <div class="car-card" data-car="green">
+                                <div class="car-preview green-car">🚙</div>
+                                <h2>JUNGLE KING</h2>
+                                <p>Strong</p>
+                                <button class="select-car">SELECT</button>
+                            </div>
+                        </div>
+                        <button id="raceButton" class="main-button">RACE!</button>
+                    </div>
+                </div>
+
+                <div id="gameHUD" class="hud hidden">
+                    <span>SCORE: <strong id="score">0</strong></span>
+                    <span>HIGH: <strong id="highScore">0</strong></span>
+                    <span>TRICK: <strong id="trickScore">0</strong></span>
+                </div>
+
+                <canvas id="gameCanvas" width="600" height="200"></canvas>
+
+                <div id="overlay" class="overlay hidden">
+                    <canvas id="overlayAnim" width="120" height="120"></canvas>
+                    <p id="overlayText">Press Space to start</p>
+                    <button id="menuButton" class="small-button">MAIN MENU</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================
+     ACCOUNT
+========================= -->
+
+<section id="account" class="page-section">
+<div class="section-heading"><div><p class="eyebrow">YOUR PROFILE</p><h2>Account</h2></div></div>
+
+<!-- PROFILE CONTAINER - FULL WIDTH -->
+<article class="account-card profile-card">
+  <div class="avatar" id="accountAvatar">R</div>
+  <div>
+    <p class="eyebrow">COLLECTOR</p>
+    <h3 id="accountName">Loading…</h3>
+    <p id="accountEmail">Loading…</p>
+  </div>
+  <div class="account-actions">
+    <button class="btn secondary" id="editProfileBtn" type="button">Edit Profile</button>
+    <button class="btn danger" id="signOutBtn" type="button">Sign Out</button>
+  </div>
+</article>
+
+<div class="account-stats-grid">
+
+  <article class="account-card">
+    <p class="eyebrow">COLLECTION</p>
+    <h3 id="accountCollection">0 Cars</h3>
+  </article>
+
+  <article class="account-card">
+    <p class="eyebrow">AUCTION ACTIVITY</p>
+    <h3 id="accountBids">0 Active Bids</h3>
+  </article>
+
+  <article class="account-card">
+    <p class="eyebrow">SUBMITTED RIDES</p>
+    <h3 id="submittedCount">0 Rides</h3>
+  </article>
+
+</div>
+</section>
+
+</main>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+    <span>REDLINE GARAGE</span>
+    <span>COLLECT. BID. DRIVE.</span>
+</footer>
+
+
+<div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+<div id="bidModal" class="modal" aria-hidden="true"><div class="modal-card"><button class="modal-close" data-close="bidModal" type="button">×</button><h2 id="bidTitle">Place Bid</h2><p id="bidCurrent"></p><form id="bidForm"><input type="hidden" id="bidAuctionId"><label>Bid Amount<input id="bidAmount" type="number" min="1" step="1" required></label><div class="modal-actions"><button class="btn secondary" data-close="bidModal" type="button">Cancel</button><button class="btn primary" type="submit">Place Bid</button></div></form></div></div>
+
+<div id="checkoutModal" class="modal" aria-hidden="true"><div class="modal-card"><button class="modal-close" data-close="checkoutModal" type="button">×</button><h2 id="checkoutTitle">Shipping</h2><form id="checkoutForm"><input type="hidden" id="checkoutCarId"><label>Name<input id="shipName" required></label><label>Phone<input id="shipPhone" required></label><label>Shipping Address<textarea id="shipAddress" rows="3" required></textarea></label><label>PIN Code<input id="shipPin" required inputmode="numeric"></label><div class="modal-actions"><button class="btn secondary" data-close="checkoutModal" type="button">Cancel</button><button class="btn primary" type="submit">Place Order</button></div></form></div></div>
+
+<div id="profileModal" class="modal" aria-hidden="true"><div class="modal-card"><button class="modal-close" data-close="profileModal" type="button">×</button><h2>Edit Profile</h2><form id="profileForm"><label>Display Name<input id="profileName" required></label><label>Username<input id="profileUsername" required></label><label>Permanent Address<textarea id="profileAddress" rows="2"></textarea></label><label>Temporary Address<textarea id="profileTempAddress" rows="2"></textarea></label><div class="modal-actions"><button class="btn secondary" data-close="profileModal" type="button">Cancel</button><button class="btn primary" type="submit">Save Profile</button></div></form></div></div>
+
+<script src="GA.js"></script>
+<script src="A3.js"></script>
+</body>
+</html>

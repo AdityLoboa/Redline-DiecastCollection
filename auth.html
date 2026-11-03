@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Redline Garage — Account</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        :root {
+            --background: #0D0D0D;
+            --surface: #1A1A1A;
+            --light: #F2F0EA;
+            --accent: #C1121F;
+            --muted: #8A8A8A;
+            --border: rgba(242, 240, 234, 0.14);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 24px;
+
+            font-family: Inter, sans-serif;
+
+            color: var(--light);
+            background: var(--background);
+
+            overflow-x: hidden;
+        }
+
+        /* =========================================
+           BACKGROUND
+        ========================================= */
+
+        body::before {
+            content: "";
+
+            position: fixed;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    rgba(13, 13, 13, 0.92),
+                    rgba(13, 13, 13, 0.97)
+                ),
+                radial-gradient(
+                    circle at 50% 30%,
+                    rgba(193, 18, 31, 0.16),
+                    transparent 50%
+                );
+
+            pointer-events: none;
+        }
+
+        /* =========================================
+           CONTAINER
+        ========================================= */
+
+        .auth-container {
+            position: relative;
+
+            width: min(460px, 100%);
+
+            z-index: 1;
+        }
+
+        /* =========================================
+           CARD
+        ========================================= */
+
+        .auth-card {
+            background: rgba(26, 26, 26, 0.88);
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 20px;
+
+            padding: 38px;
+
+            backdrop-filter: blur(18px);
+
+            box-shadow:
+                0 25px 80px rgba(0, 0, 0, 0.55);
+        }
+
+        /* =========================================
+           LOGO
+        ========================================= */
+
+        .logo {
+            text-align: center;
+
+            margin-bottom: 32px;
+        }
+
+        .logo-mark {
+            width: 46px;
+            height: 46px;
+
+            margin: 0 auto 14px;
+
+            display: grid;
+            place-items: center;
+
+            background: var(--accent);
+
+            border-radius: 10px;
+
+            font-size: 22px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+
+            font-weight: 900;
+
+            letter-spacing: -0.04em;
+
+            margin-bottom: 7px;
+        }
+
+        .logo p {
+            color: var(--muted);
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.16em;
+
+            text-transform: uppercase;
+        }
+
+        /* =========================================
+           PANELS
+        ========================================= */
+
+        .auth-panel {
+            display: block;
+        }
+
+        .auth-panel.hidden {
+            display: none;
+        }
+
+        .auth-title {
+            font-size: 24px;
+
+            margin-bottom: 24px;
+
+            letter-spacing: -0.03em;
+        }
+
+        /* =========================================
+           FORM
+        ========================================= */
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+
+            margin-bottom: 8px;
+
+            color: var(--muted);
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 0.1em;
+
+            text-transform: uppercase;
+        }
+
+        .form-group input {
+            width: 100%;
+
+            padding: 13px 14px;
+
+            background: #101010;
+
+            color: var(--light);
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 9px;
+
+            outline: none;
+
+            font-family: inherit;
+
+            font-size: 14px;
+
+            transition:
+                border-color .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .form-group input::placeholder {
+            color: #555;
+        }
+
+        .form-group input:focus {
+            border-color: var(--accent);
+
+            box-shadow:
+                0 0 0 3px
+                rgba(193, 18, 31, 0.12);
+        }
+
+        /* =========================================
+           PASSWORD ROW
+        ========================================= */
+
+        .password-row {
+            display: flex;
+
+            justify-content: flex-end;
+
+            margin-top: -8px;
+
+            margin-bottom: 18px;
+        }
+
+        .text-button {
+            border: 0;
+
+            background: none;
+
+            color: var(--muted);
+
+            cursor: pointer;
+
+            font-family: inherit;
+
+            font-size: 11px;
+
+            transition: color .2s ease;
+        }
+
+        .text-button:hover {
+            color: var(--light);
+        }
+
+        /* =========================================
+           BUTTON
+        ========================================= */
+
+        .auth-button {
+            width: 100%;
+
+            padding: 14px 18px;
+
+            border:
+                1px solid
+                var(--accent);
+
+            border-radius: 9px;
+
+            background: var(--accent);
+
+            color: var(--light);
+
+            cursor: pointer;
+
+            font-family: inherit;
+
+            font-size: 11px;
+
+            font-weight: 900;
+
+            letter-spacing: .1em;
+
+            text-transform: uppercase;
+
+            transition:
+                transform .2s ease,
+                filter .2s ease;
+        }
+
+        .auth-button:hover {
+            transform: translateY(-2px);
+
+            filter: brightness(1.12);
+        }
+
+        .auth-button:disabled {
+            opacity: .55;
+
+            cursor: not-allowed;
+
+            transform: none;
+        }
+
+        /* =========================================
+           MESSAGE
+        ========================================= */
+
+        .auth-message {
+            min-height: 20px;
+
+            margin-bottom: 15px;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+        .auth-message.success {
+            color: var(--light) !important;
+        }
+
+        .auth-message.error {
+            color: #ff6b73 !important;
+        }
+
+        /* =========================================
+           SWITCH
+        ========================================= */
+
+        .switch-text {
+            margin-top: 22px;
+
+            text-align: center;
+
+            color: var(--muted);
+
+            font-size: 12px;
+        }
+
+        .switch-button {
+            border: 0;
+
+            background: none;
+
+            color: var(--light);
+
+            cursor: pointer;
+
+            font-family: inherit;
+
+            font-weight: 800;
+
+            text-decoration: underline;
+        }
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .auth-footer {
+            margin-top: 20px;
+
+            text-align: center;
+
+            color: #555;
+
+            font-size: 9px;
+
+            letter-spacing: .1em;
+
+            text-transform: uppercase;
+        }
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 520px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .auth-card {
+                padding: 28px 22px;
+            }
+
+            .logo h1 {
+                font-size: 21px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="auth-container">
+
+    <div class="auth-card">
+
+        <!-- =========================================
+             LOGO
+        ========================================== -->
+
+        <div class="logo">
+
+            <div class="logo-mark">
+                🏁
+            </div>
+
+            <h1>
+                REDLINE GARAGE
+            </h1>
+
+            <p>
+                Collect • Bid • Drive
+            </p>
+
+        </div>
+
+
+        <!-- =========================================
+             LOGIN
+        ========================================== -->
+
+        <section
+            id="loginPanel"
+            class="auth-panel"
+        >
+
+            <h2 class="auth-title">
+                Enter Garage
+            </h2>
+
+            <div
+                id="loginMessage"
+                class="auth-message"
+            ></div>
+
+            <form id="loginForm">
+
+                <div class="form-group">
+
+                    <label for="loginEmail">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        autocomplete="email"
+                        placeholder="your@email.com"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="loginPassword">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        autocomplete="current-password"
+                        placeholder="••••••••"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="password-row">
+
+                    <button
+                        type="button"
+                        id="forgotPassword"
+                        class="text-button"
+                    >
+                        Forgot password?
+                    </button>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    id="loginButton"
+                    class="auth-button"
+                >
+                    ENTER GARAGE
+                </button>
+
+            </form>
+
+
+            <div class="switch-text">
+
+                Don't have an account?
+
+                <button
+                    type="button"
+                    id="showSignup"
+                    class="switch-button"
+                >
+                    Create one
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             SIGNUP
+        ========================================== -->
+
+        <section
+            id="signupPanel"
+            class="auth-panel hidden"
+        >
+
+            <h2 class="auth-title">
+                Create Account
+            </h2>
+
+            <div
+                id="signupMessage"
+                class="auth-message"
+            ></div>
+
+            <form id="signupForm">
+
+                <div class="form-group">
+
+                    <label for="signupName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="signupName"
+                        autocomplete="name"
+                        placeholder="Your name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="signupUsername">
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="signupUsername"
+                        autocomplete="username"
+                        placeholder="yourusername"
+                        minlength="3"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="signupEmail">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="signupEmail"
+                        autocomplete="email"
+                        placeholder="your@email.com"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="signupPassword">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="signupPassword"
+                        autocomplete="new-password"
+                        placeholder="Minimum 8 characters"
+                        minlength="8"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="signupConfirm">
+                        Confirm Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="signupConfirm"
+                        autocomplete="new-password"
+                        placeholder="Repeat your password"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    id="signupButton"
+                    class="auth-button"
+                >
+                    CREATE ACCOUNT
+                </button>
+
+            </form>
+
+
+            <div class="switch-text">
+
+                Already have an account?
+
+                <button
+                    type="button"
+                    id="showLogin"
+                    class="switch-button"
+                >
+                    Sign in
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- =========================================
+             PASSWORD RESET
+        ========================================== -->
+        <section id="resetPanel" class="auth-panel hidden">
+
+            <h2 class="auth-title">
+                Set New Password
+            </h2>
+
+            <div id="resetMessage" class="auth-message"></div>
+
+            <form id="resetForm">
+
+                <div class="form-group">
+                    <label for="resetPassword">New Password</label>
+                    <input
+                        type="password"
+                        id="resetPassword"
+                        autocomplete="new-password"
+                        placeholder="Minimum 8 characters"
+                        minlength="8"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="resetConfirm">Confirm Password</label>
+                    <input
+                        type="password"
+                        id="resetConfirm"
+                        autocomplete="new-password"
+                        placeholder="Repeat your password"
+                        minlength="8"
+                        required
+                    >
+                </div>
+
+                <button
+                    type="submit"
+                    id="resetButton"
+                    class="auth-button"
+                >
+                    UPDATE PASSWORD
+                </button>
+
+            </form>
+
+            <div class="switch-text">
+                Remembered your password?
+                <button type="button" id="resetBackLogin" class="switch-button">
+                    Back to login
+                </button>
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <div class="auth-footer">
+        REDLINE GARAGE • COLLECT • BID • DRIVE
+    </div>
+
+</div>
+
+
+<!-- ================================================
+     SUPABASE CDN
+================================================ -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="Sub.js"></script>
+<!-- AUTHENTICATION SCRIPT
+================================================ -->
+
+<script src="auth.js"></script>
+
+</body>
+</html>

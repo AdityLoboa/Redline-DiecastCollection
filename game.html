@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="siteGate.js"></script>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Monster Truck Stunt</title>
+
+    <link rel="stylesheet"
+        href="GamSty.css">
+</head>
+
+<body>
+
+    <div class="game-wrap">
+
+        
+
+        <div id="mainMenu" class="menu">
+
+            <div class="menu-box">
+
+                <div class="logo">
+                    MONSTER
+                    <span>TRUCK</span>
+                </div>
+
+                <p class="subtitle">
+                    STUNT RACING
+                </p>
+
+                <button id="startButton"
+                    class="main-button">
+                    START
+                </button>
+
+                <p class="controls">
+                    SPACE / ↑ = Jump<br>
+                    ← → = Flip<br>
+                    Perform tricks in the air!
+                </p>
+
+                <a href="A1.html" class="back-to-site">&larr; Back to Diecast Set Cars</a>
+
+            </div>
+
+        </div>
+
+
+        
+
+        <div id="carMenu"
+            class="menu hidden">
+
+            <div class="garage">
+
+                <h1>CHOOSE YOUR TRUCK</h1>
+
+                <div class="car-list">
+
+                    <div class="car-card selected"
+                        data-car="red">
+
+                        <div class="car-preview red-car">
+                            🚙
+                        </div>
+
+                        <h2>FIRE BEAST</h2>
+
+                        <p>
+                            Balanced
+                        </p>
+
+                        <button class="select-car">
+                            SELECT
+                        </button>
+
+                    </div>
+
+
+                    <div class="car-card"
+                        data-car="blue">
+
+                        <div class="car-preview blue-car">
+                            🚙
+                        </div>
+
+                        <h2>THUNDER</h2>
+
+                        <p>
+                            Faster
+                        </p>
+
+                        <button class="select-car">
+                            SELECT
+                        </button>
+
+                    </div>
+
+
+                    <div class="car-card"
+                        data-car="green">
+
+                        <div class="car-preview green-car">
+                            🚙
+                        </div>
+
+                        <h2>JUNGLE KING</h2>
+
+                        <p>
+                            Strong
+                        </p>
+
+                        <button class="select-car">
+                            SELECT
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <button id="raceButton"
+                    class="main-button">
+                    RACE!
+                </button>
+
+            </div>
+
+        </div>
+
+
+       
+
+        <div id="gameHUD"
+            class="hud hidden">
+
+            <span>
+                SCORE:
+                <strong id="score">0</strong>
+            </span>
+
+            <span>
+                HIGH:
+                <strong id="highScore">0</strong>
+            </span>
+
+            <span>
+                TRICK:
+                <strong id="trickScore">0</strong>
+            </span>
+
+        </div>
+
+
+        
+
+        <canvas id="gameCanvas"
+            width="600"
+            height="200">
+        </canvas>
+
+
+        
+
+        <div id="overlay"
+            class="overlay hidden">
+
+            <canvas id="overlayAnim"
+                width="120"
+                height="120">
+            </canvas>
+
+            <p id="overlayText">
+                Press Space to start
+            </p>
+
+            <button id="menuButton"
+                class="small-button">
+                MAIN MENU
+            </button>
+
+            <a href="A1.html" class="back-to-site">&larr; Back to Diecast Set Cars</a>
+
+        </div>
+
+    </div>
+
+
+    <script src="GA.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+/* Shared styling for <model-viewer> across every page.
+   Depends on the --red / --gold / --dark / --cream variables from car.css. */
+
+.model-section {
+  padding: 50px 8vw;
+  text-align: center;
+}
+
+.model-section h2 {
+  color: var(--gold);
+  font-size: 2rem;
+  margin-bottom: 6px;
+}
+
+.model-section .model-desc {
+  color: #f5dcb2;
+  max-width: 60ch;
+  margin: 0 auto 24px;
+}
+
+.model-viewer-card {
+  max-width: 520px;
+  margin: 0 auto;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 18px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+model-viewer {
+  width: 100%;
+  height: 360px;
+  border-radius: 12px;
+  --poster-color: transparent;
+  background-color: rgba(20, 12, 9, 0.4);
+}
+
+.model-caption {
+  margin-top: 10px;
+  color: var(--gold);
+  font-size: 0.85rem;
+}
+
+.model-note {
+  margin-top: 4px;
+  color: #d8b98a;
+  font-size: 0.75rem;
+}
+
+/* Sketchfab embed */
+.sketchfab-embed-wrapper {
+  max-width: 100%;
+}
+
+.sketchfab-frame {
+  width: 100%;
+  height: 380px;
+  border: none;
+  border-radius: 12px;
+  display: block;
+}
+
+.sketchfab-credit {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #d8b98a;
+}
+
+.sketchfab-credit a {
+  color: var(--gold);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.sketchfab-credit a:hover {
+  text-decoration: underline;
+}

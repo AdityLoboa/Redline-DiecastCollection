@@ -1,0 +1,607 @@
+
+.hidden {
+    display: none !important;
+}
+
+.menu {
+    position: absolute;
+    inset: 0;
+
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu.hidden {
+    display: none !important;
+}
+
+html,
+body {
+
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    font-family:
+        'Courier New',
+        monospace;
+
+    background: #000;
+}
+
+
+/* =========================================
+   GAME WRAPPER
+========================================= */
+
+.game-wrap {
+
+    position: relative;
+
+    width: 100vw;
+    height: 100vh;
+}
+
+
+/* =========================================
+   GAME CANVAS
+========================================= */
+
+canvas#gameCanvas {
+
+    display: block;
+
+    width: 100vw;
+    height: 100vh;
+
+    touch-action: manipulation;
+}
+
+
+/* =========================================
+   START MENU
+========================================= */
+
+.menu {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 10;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,0,0,0.92),
+            rgba(30,30,30,0.85)
+        );
+}
+
+
+.hidden {
+
+    display: none !important;
+}
+
+
+/* =========================================
+   START MENU BOX
+========================================= */
+
+.menu-box {
+
+    width: min(520px, 85vw);
+
+    padding: 45px;
+
+    text-align: center;
+
+    background:
+        rgba(10,10,10,0.92);
+
+    border:
+        3px solid white;
+
+    box-shadow:
+        0 0 30px rgba(255,255,255,0.15);
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo {
+
+    font-size: clamp(48px, 8vw, 90px);
+
+    font-weight: 900;
+
+    color: white;
+
+    line-height: 0.85;
+
+    transform:
+        skew(-8deg);
+}
+
+.logo span {
+
+    display: block;
+
+    color: #ff3b30;
+
+    text-shadow:
+        4px 4px 0 #111;
+}
+
+
+.subtitle {
+
+    margin-top: 18px;
+
+    color: #d4af37;
+
+    letter-spacing: 8px;
+
+    font-size: 16px;
+}
+
+
+/* =========================================
+   MAIN BUTTON
+========================================= */
+
+.main-button {
+
+    margin-top: 25px;
+
+    padding:
+        15px 55px;
+
+    font-family:
+        'Courier New',
+        monospace;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    color: white;
+
+    background: #c8102e;
+
+    border: 3px solid white;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s,
+        background 0.15s;
+}
+
+
+.main-button:hover {
+
+    background: #e0132f;
+
+    transform:
+        scale(1.06);
+}
+
+
+.main-button:active {
+
+    transform:
+        scale(0.96);
+}
+
+
+/* =========================================
+   CONTROLS
+========================================= */
+
+.controls {
+
+    margin-top: 30px;
+
+    color: #bbb;
+
+    line-height: 1.8;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   GARAGE
+========================================= */
+
+.garage {
+
+    width: min(1000px, 90vw);
+
+    padding: 25px;
+
+    text-align: center;
+}
+
+
+.garage h1 {
+
+    margin-bottom: 25px;
+
+    color: white;
+
+    font-size:
+        clamp(25px, 5vw, 45px);
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   CAR LIST
+========================================= */
+
+.car-list {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+}
+
+
+/* =========================================
+   CAR CARD
+========================================= */
+
+.car-card {
+
+    width: 230px;
+
+    padding: 20px;
+
+    background:
+        rgba(0,0,0,0.8);
+
+    border: 2px solid #555;
+
+    transition:
+        transform 0.2s,
+        border 0.2s;
+
+    cursor: pointer;
+}
+
+
+.car-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    border-color: white;
+}
+
+
+.car-card.selected {
+
+    border:
+        3px solid #d4af37;
+
+    box-shadow:
+        0 0 20px
+        rgba(255,209,102,0.25);
+}
+
+
+.car-card h2 {
+
+    color: white;
+
+    font-size: 18px;
+}
+
+
+.car-card p {
+
+    color: #aaa;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   CAR PREVIEW
+========================================= */
+
+.car-preview {
+
+    height: 110px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 75px;
+
+    border-bottom:
+        2px solid #333;
+
+    margin-bottom: 10px;
+}
+
+
+.red-car {
+
+    background:
+        linear-gradient(
+            135deg,
+            #601018,
+            #c8102e
+        );
+}
+
+
+.blue-car {
+
+    background:
+        linear-gradient(
+            135deg,
+            #102a56,
+            #277da1
+        );
+}
+
+
+.green-car {
+
+    background:
+        linear-gradient(
+            135deg,
+            #123d24,
+            #2a9d8f
+        );
+}
+
+
+/* =========================================
+   SELECT BUTTON
+========================================= */
+
+.select-car {
+
+    padding:
+        8px 25px;
+
+    background: #222;
+
+    color: white;
+
+    border:
+        1px solid white;
+
+    font-family:
+        'Courier New',
+        monospace;
+
+    cursor: pointer;
+}
+
+
+.car-card.selected
+.select-car {
+
+    background: #d4af37;
+
+    color: #111;
+}
+
+
+/* =========================================
+   HUD
+========================================= */
+
+.hud {
+
+    position: absolute;
+
+    top: 20px;
+
+    left: 24px;
+
+    right: 24px;
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    font-size: 18px;
+
+    color: white;
+
+    text-shadow:
+        0 1px 4px
+        rgba(0,0,0,0.7);
+
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   GAME OVER
+========================================= */
+
+.overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    background:
+        rgba(0,0,0,0.55);
+
+    z-index: 3;
+}
+
+
+#overlayAnim {
+
+    width: 100px;
+    height: 100px;
+
+    border: none;
+}
+
+
+#overlayText {
+
+    font-size: 18px;
+
+    font-weight: bold;
+
+    color: white;
+
+    background:
+        rgba(0,0,0,0.6);
+
+    padding:
+        12px 20px;
+
+    border:
+        2px solid white;
+
+    border-radius: 6px;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   SMALL BUTTON
+========================================= */
+
+.small-button {
+
+    padding:
+        10px 25px;
+
+    background: #222;
+
+    color: white;
+
+    border:
+        2px solid white;
+
+    font-family:
+        'Courier New',
+        monospace;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.small-button:hover {
+
+    background: #444;
+}
+
+
+/* =========================================
+   BACK TO SITE LINK
+========================================= */
+
+.back-to-site {
+
+    display: inline-block;
+
+    margin-top: 22px;
+
+    color: #999;
+
+    font-size: 12px;
+
+    letter-spacing: 1px;
+
+    text-decoration: none;
+
+    border-bottom: 1px solid transparent;
+
+    transition: color 0.15s, border-color 0.15s;
+}
+
+.back-to-site:hover {
+
+    color: #d4af37;
+
+    border-bottom-color: #d4af37;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .menu-box {
+
+        padding: 30px 20px;
+    }
+
+    .car-card {
+
+        width: 170px;
+
+        padding: 12px;
+    }
+
+    .car-preview {
+
+        height: 80px;
+
+        font-size: 55px;
+    }
+
+    .hud {
+
+        font-size: 13px;
+
+        left: 10px;
+        right: 10px;
+    }
+}

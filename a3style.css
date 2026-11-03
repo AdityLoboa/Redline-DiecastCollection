@@ -1,0 +1,1766 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+:root{--background:#bebebe;
+    --surface:#1A1A1A;
+    --light:#F2F0EA;
+    --accent:#C1121F;
+    --muted:#8A8A8A;
+    --border:rgba(242,240,234,.14);
+    --radius:20px;
+    --shadow:0 12px 40px rgba(0,0,0,.4)}
+*{box-sizing:border-box;
+    margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,sans-serif;
+        color:var(--light);
+        background:var(--background);
+        font-size:16px;line-height:1.65;
+        overflow-x:hidden}button,input,textarea,select{font:inherit}a{color:inherit}    
+    .site-video-background{position:fixed;
+    inset:0;
+    z-index:-20;overflow:hidden;
+    background:#413c3c7b;pointer-events:none}
+    .site-video-background video{width:100%;
+        height:100%;object-fit:cover;opacity:.42;
+        filter:brightness(5.65) contrast(2.2);
+        transform:scale(1.03)}
+        .site-video-overlay{position:absolute;
+            inset:0;background:rgba(104, 104, 104, 0.199)}
+            .video-vignette{position:absolute;
+                inset:0;background:radial-gradient(circle,transparent 20%,rgba(13,13,13,.8) 100%)}
+                .video-grid{position:absolute;
+                    inset:0;
+                    opacity:.07;
+                    background-image:linear-gradient(rgba(242,240,234,.3) 1px,transparent 1px),linear-gradient(90deg,rgba(242,240,234,.3) 1px,transparent 1px);
+                    background-size:80px 80px}.video-scanline{position:absolute;
+                        top:0;
+                        width:100%;height:1px;
+                        background:rgba(242,240,234,.12);
+                        animation:scan 8s linear infinite}@keyframes scan{to{transform:translateY(100vh)}}
+.site-header{position:fixed;
+    top:0;left:0;
+    right:0;
+    height:70px;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 max(18px,calc((100% - 1180px)/2));
+    background:rgba(13,13,13,.86);
+    backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--border)}
+    .site-logo{display:flex;
+        gap:12px;align-items:center;
+        text-decoration:none;
+        font-size:13px;font-weight:900;
+        letter-spacing:.08em}
+        .site-logo-mark{display:grid;
+            place-items:center;
+            width:34px;
+            height:34px;
+            border-radius:8px;
+            background:var(--accent)}
+            #mainNav{display:flex;gap:34px}
+            #mainNav a{font-size:11px;
+                font-weight:700;
+                letter-spacing:.08em;
+                text-transform:uppercase;
+                text-decoration:none;
+                color:var(--muted);
+                transition:.25s}.nav-link.active,.nav-link:hover{color:var(--light)!important}
+                .menu-toggle{display:none;
+                    background:none;
+                    border:0;
+                    color:var(--light);font-size:25px}
+.page-section{max-width:1180px;
+    margin:auto;
+    padding:90px 20px}
+    .hero{min-height:100svh;
+        padding-top:48px;
+        display:grid;grid-template-columns:1fr 1fr;
+        align-items:center;
+        gap:60px}
+        .hero-content{max-width:650px}
+        .eyebrow{font-size:10px;
+            letter-spacing:.16em;
+            font-weight:800;
+            color:var(--muted);
+            text-transform:uppercase;
+            margin-bottom:12px}
+            h1{font-size:clamp(44px,7vw,82px);
+                line-height:.98;
+                letter-spacing:-.05em;
+                margin-bottom:25px}
+                h1 span{color:var(--accent)}
+                h2{font-size:clamp(30px,4vw,50px);
+                    line-height:1.05;
+                    letter-spacing:-.035em}
+                    h3{font-size:22px;
+                        line-height:1.2}
+                        .hero-description{max-width:600px;
+                            color:var(--muted);
+                            margin-bottom:30px}
+                            .button-row,
+                            .form-actions,
+                            .account-actions,
+                            .modal-actions{display:flex;
+                                gap:12px;flex-wrap:wrap}
+                                .btn{border:1px solid var(--accent);
+                                    border-radius:10px;
+                                    padding:12px 20px;cursor:pointer;
+                                    text-decoration:none;text-transform:uppercase;
+                                    font-size:11px;font-weight:800;
+                                    letter-spacing:.08em;transition:.25s}
+                                    .btn.primary{background:var(--accent);
+                                        color:var(--light)}
+                                        .btn.secondary{background:#C1121F;
+                                            color:var(--light);border-color:var(--border)}
+                                            .btn.danger{background:#C1121F;
+                                                border-color:var(--accent);
+                                                color:#ffffff}
+                                                .btn:hover{transform:translateY(-2px);
+                                                    filter:brightness(1.12)}
+                                                    .btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.hero-car-card,
+.stat-card,
+.car-card,
+.auction-card,
+.account-card,
+.form-card,
+.game-container{background:rgba(26,26,26,.72);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    backdrop-filter:blur(16px);
+    box-shadow:var(--shadow)}
+    .hero-car-card{overflow:hidden}
+    .hero-car-image{height:420px;position:relative}
+    .hero-car-image img,
+    .car-image img,
+    .auction-image img{width:100%;
+        height:100%;
+        object-fit:cover;
+        display:block}
+        .featured-label,
+        .auction-badge{position:absolute;
+            top:14px;left:14px;
+            background:var(--accent);
+            padding:6px 10px;
+            border-radius:7px;
+            font-size:9px;
+            font-weight:800;
+            letter-spacing:.12em}
+            .hero-car-info{padding:22px;
+                display:flex;
+                justify-content:
+                space-between;
+                gap:15px;
+                align-items:end}.small-label{font-size:9px;
+                    color:var(--muted);
+                    letter-spacing:.12em}
+                    .section-heading{display:flex;
+                        justify-content:space-between;
+                        align-items:end;
+                        margin-bottom:30px}
+                        .live-status{font-size:10px;
+                            color:#ff5a63;letter-spacing:.1em}
+                            .stats-grid{display:grid;
+                                grid-template-columns:repeat(4,1fr);
+                                gap:16px}
+                                .stat-card{padding:24px}
+                                .stat-card span{font-size:10px;
+                                    color:var(--muted);
+                                    letter-spacing:.12em}
+                                    .stat-card strong{display:block;
+                                        font-size:30px;margin:6px 0}
+                                        .stat-card small{color:var(--muted)}
+.car-grid{display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+    gap:20px}
+    .car-card,
+    .auction-card{overflow:hidden}
+    .car-image,
+    .auction-image{height:280px;
+        position:relative}
+        .car-info,
+        .auction-info{padding:20px}
+        .car-info p,
+        .auction-info p{color:var(--muted);
+            font-size:13px}
+            .car-specs{display:flex;
+                justify-content:space-between;
+                margin:18px 0;
+                color:var(--muted);
+                font-size:12px}
+                .car-specs strong{color:var(--light)}
+                .car-action,
+                .auction-action{display:flex;
+                    justify-content:space-between;
+                    align-items:center;gap:10px}
+                    .auction-grid{display:grid;
+                        grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+                        gap:20px}
+                        .countdown{font-size:14px;
+                            font-weight:800;
+                            color:var(--light);
+                            padding:10px 0}
+                            .countdown.starting{color:var(--accent)}
+                            .auction-price{display:flex;
+                                justify-content:space-between;
+                                align-items:end;
+                                border-top:1px solid var(--border);
+                                padding:15px 0}
+                                .auction-price span,
+                                .bid-count{font-size:10px;
+                                    color:var(--muted)}
+                                    .auction-price strong{font-size:23px}
+                                    .auction-badge{left:auto;right:14px}
+.form-card{padding:28px}
+.form-grid{display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px}
+    .form-group label,
+    .auction-create-extra label,
+    .modal-card label{display:flex;flex-direction:column;
+        gap:8px;font-size:11px;
+        font-weight:700;color: #000000; /* (--dark) */;
+        text-transform:uppercase;
+        letter-spacing:.08em}
+        .form-group input,
+        .form-group textarea,
+        .auction-create-extra input,
+        .auction-create-extra select,
+        .modal-card input,
+        .modal-card textarea{width:100%;
+            background:#242424;
+            color: #fcfcfc;
+            border:1px solid var(--border);
+            border-radius:9px;
+            padding:12px;
+            outline:none}
+            .form-group input:focus,
+            .form-group textarea:focus,
+            .modal-card input:focus,
+            .modal-card textarea:focus{border-color:var(--accent)}
+            .full{grid-column:1/-1}
+            .upload-preview{min-height:230px;
+                border:1px dashed var(--border);
+                border-radius:14px;
+                display:grid;place-items:center;
+                overflow:hidden}
+                .upload-preview img{width:100%;
+                    height:280px;
+                    object-fit:contain}
+                    .preview-placeholder{display:grid;
+                        gap:7px;
+                        text-align:center;
+                        color:var(--muted)}
+                        .preview-placeholder strong{color:var(--light)}
+                        .form-note{color:var(--muted);
+                            font-size:12px;
+                            margin-top:16px}
+                            .auction-create-extra{display:grid;
+                                grid-template-columns:1fr 1fr;
+                                gap:18px;margin-top:18px}
+.game-container{padding:20px}
+.game-header{display:flex;
+    justify-content:space-between;
+    padding:8px 0;font-size:11px;
+    color:var(--muted)}
+    #gameCanvas{width:100%;
+        height:auto;
+        background:#0a0a0a;
+        border-radius:10px}
+        .game-controls{display:flex;
+            align-items:center;
+            gap:15px;margin-top:15px;
+            color:var(--muted);
+            font-size:12px}
+.account-grid{display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px}
+    .account-card{padding:24px}
+    .profile-card{grid-column:1/-1;
+        display:flex;
+        align-items:center;
+        gap:18px}
+        .profile-card 
+        .account-actions{margin-left:auto}
+        .avatar{width:58px;
+            height:58px;
+            display:grid;
+            place-items:center;
+            background:var(--accent);
+            border-radius:50%;
+            font-size:24px;
+            font-weight:900}
+.loading,
+.empty-state{padding:40px;
+    text-align:center;
+    color:var(--muted);
+    border:1px dashed var(--border);
+    border-radius:14px;
+    grid-column:1/-1}
+.toast-container{position:fixed;
+    right:20px;
+    top:88px;
+    width:min(360px,calc(100vw - 40px));
+    z-index:500;
+    display:grid;gap:10px;
+    pointer-events:none}
+    .toast{display:flex;
+        gap:12px;align-items:flex-start;
+        padding:14px 16px;
+        background:rgba(26,26,26,.96);
+        border:1px solid var(--border);
+        border-left:3px solid var(--accent);
+        border-radius:12px;
+        box-shadow:0 18px 50px rgba(0,0,0,.5);
+        transform:translateX(120%);
+        opacity:0;
+        transition:.3s}
+        .toast.show{transform:translateX(0);
+            opacity:1}
+            .toast>span{width:22px;
+                height:22px;
+                display:grid;
+                place-items:center;
+                background:var(--accent);
+                border-radius:50%;
+                font-weight:900;font-size:12px}
+                .toast.success{border-left-color:var(--accent)}
+.modal{position:fixed;
+    inset:0;
+    z-index:400;
+    background:rgba(0,0,0,.68)
+    ;display:none;
+    place-items:center;
+    padding:20px}
+    .modal.open{display:grid}
+    .modal-card{width:min(520px,100%);
+        max-height:90vh;
+        overflow:auto;
+        background:var(--surface);
+        border:1px solid var(--border);
+        border-radius:18px;
+        padding:28px;
+        position:relative;
+        box-shadow:0 30px 100px rgba(0,0,0,.65)}
+        .modal-card h2{margin-bottom:22px}
+        .modal-card form{display:grid;
+            gap:16px}
+            .modal-close{position:absolute;
+                right:15px;
+                top:12px;
+                border:0;
+                background:none;
+                color:var(--light);
+                font-size:28px;
+                cursor:pointer}
+                .modal-muted{color:var(--muted);
+                    font-size:13px;
+                    margin:-10px 0 15px}
+.reveal{opacity:0;
+    transform:translateY(35px);
+    transition:opacity .7s ease,transform .7s ease}
+    .reveal.in-view{opacity:1;transform:none}
+    footer{max-width:1180px;
+        margin:auto;
+        padding:50px 20px;
+        display:flex;
+        justify-content:space-between;
+        color:var(--muted);
+        font-size:10px;
+        letter-spacing:.12em;
+        border-top:1px solid var(--border)}
+@media(max-width:900px){#mainNav{display:none}
+.menu-toggle{display:block}
+#mainNav.open{position:absolute;
+    display:flex;
+    top:70px;
+    left:18px;
+    right:18px;
+    padding:18px;
+    flex-direction:column;
+    gap:18px;
+    background:rgba(26,26,26,.98);
+    border:1px solid var(--border);
+    border-radius:12px}
+    .hero{grid-template-columns:1fr}
+    .stats-grid,
+    .car-grid,
+    .auction-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px)
+{.page-section{padding:70px 18px}
+.hero{padding-top:15px}
+.stats-grid,
+.car-grid,
+.auction-grid,
+.account-grid,
+.form-grid,
+.auction-create-extra{grid-template-columns:1fr}
+.profile-card{align-items:flex-start;
+    flex-wrap:wrap}
+    .profile-card 
+    .account-actions{margin-left:0;width:100%}
+    .profile-card 
+    .btn{flex:1}
+    .hero-car-image{height:280px}
+    .car-image,
+    .auction-image{height:210px}
+    .full{grid-column:auto}
+    .form-actions 
+    .btn{width:100%}
+    footer{flex-direction:column;gap:10px}}
+@media(prefers-reduced-motion:reduce)
+{html{scroll-behavior:auto}
+.reveal{transition:none}
+.video-scanline{animation:none}}
+
+/* =========================================================
+   REDLINE GARAGE
+   JAVASCRIPT CARD COMPATIBILITY
+========================================================= */
+
+.card-body {
+    padding: 20px;
+}
+
+.card-body small {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    letter-spacing: .08em;
+
+    text-transform: uppercase;
+
+    margin-bottom: 6px;
+}
+
+.card-body h3 {
+    margin-bottom: 14px;
+}
+
+.car-tag {
+    position: absolute;
+
+    top: 14px;
+    left: 14px;
+
+    padding: 6px 9px;
+
+    background: var(--accent);
+
+    color: var(--light);
+
+    border-radius: 6px;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    letter-spacing: .1em;
+}
+
+.car-image {
+    position: relative;
+
+    height: 250px;
+
+    display: grid;
+
+    place-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #161616,
+            #222
+        );
+
+    overflow: hidden;
+}
+
+.car-image > span {
+    font-size: 28px;
+
+    font-weight: 900;
+
+    color: rgba(
+        242,
+        240,
+        234,
+        .18
+    );
+
+    letter-spacing: -.04em;
+}
+
+.specs {
+    display: flex;
+
+    gap: 8px;
+
+    margin: 16px 0;
+}
+
+.spec {
+    padding: 7px 9px;
+
+    background: #101010;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 7px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+.card-actions {
+    display: flex;
+
+    gap: 8px;
+}
+
+.card-actions .btn {
+    flex: 1;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.bid-line {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: end;
+
+    gap: 15px;
+
+    margin: 18px 0;
+
+    padding-top: 15px;
+
+    border-top:
+        1px solid
+        var(--border);
+}
+
+.bid-line span {
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 9px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .08em;
+}
+
+.bid-line strong {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 20px;
+}
+
+.auction-card .car-image {
+    height: 250px;
+}
+
+
+/* =========================================================
+   TOAST FIX
+========================================================= */
+
+.toast {
+    pointer-events: auto;
+}
+
+.toast button {
+    margin-left: auto;
+
+    border: 0;
+
+    background: transparent;
+
+    color: var(--muted);
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   MOBILE CARD FIX
+========================================================= */
+
+@media (max-width: 620px) {
+
+    .card-actions {
+        flex-direction: column;
+    }
+
+    .bid-line {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+}
+
+/* =========================================================
+   REDLINE GARAGE — CLEAN TYPOGRAPHY / NO TEXT BOXES
+   Keeps image/product cards and the game untouched.
+========================================================= */
+
+/* Remove box styling from text/information areas */
+.stats-grid,
+.stats-grid > *,
+.section-heading,
+.section-heading > *,
+.hero-content,
+.hero-description,
+.eyebrow,
+.small-label,
+.live-status {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+}
+
+/* Clean dashboard layout */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 44px;
+    align-items: start;
+    padding: 8px 0 0;
+}
+
+/* No padding/background around individual text items */
+.stats-grid > * {
+    padding: 0 !important;
+    margin: 0;
+}
+
+/* Dashboard labels */
+.stats-grid span {
+    display: block;
+    color: var(--light);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .02em;
+    line-height: 1.3;
+    margin-bottom: 24px;
+}
+
+/* Dashboard numbers */
+.stats-grid strong {
+    display: block;
+    color: var(--light);
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 0 0 24px;
+}
+
+/* Dashboard descriptions */
+.stats-grid small {
+    display: block;
+    color: var(--light);
+    font-size: 13px;
+    line-height: 1.5;
+    opacity: .9;
+}
+
+/* =========================================================
+   TEXT-ONLY ACCOUNT / INFORMATION AREAS
+========================================================= */
+
+.account-card,
+.form-card {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+}
+
+.account-card {
+    padding: 8px 0 !important;
+}
+
+/* =========================================================
+   NOTIFICATIONS — NO BLACK BOX
+========================================================= */
+
+.toast {
+    background: rgba(13, 13, 13, .18) !important;
+    border: 0 !important;
+    border-left: 2px solid var(--accent) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: blur(8px);
+}
+
+/* =========================================================
+   IMPORTANT:
+   GAME IS NOT MODIFIED
+========================================================= */
+
+
+/* =========================================================
+   REDLINE GARAGE
+   PREMIUM TEXT-ONLY DASHBOARD
+   No black boxes. No text cards.
+========================================================= */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 45px;
+    position: relative;
+}
+
+/* subtle horizontal guide */
+.stats-grid::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(242,240,234,.18),
+        transparent
+    );
+}
+
+/* Each statistic */
+.stats-grid > * {
+    position: relative;
+    min-height: 170px;
+    padding: 32px 38px 25px 0 !important;
+
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+}
+
+/* Vertical separators */
+.stats-grid > *:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 32px;
+    right: 30px;
+    width: 1px;
+    height: 105px;
+    background: linear-gradient(
+        to bottom,
+        rgba(242,240,234,.18),
+        rgba(242,240,234,.04)
+    );
+}
+
+/* Small category label */
+.stats-grid span,
+.stats-grid > p:first-child {
+    display: block;
+
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .16em;
+
+    margin: 0 0 18px;
+}
+
+/* Main number */
+.stats-grid strong {
+    display: block;
+
+    color: var(--light);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 900;
+    line-height: .95;
+    letter-spacing: -.055em;
+
+    margin: 0 0 18px;
+
+    text-shadow:
+        0 0 30px rgba(242,240,234,.08);
+}
+
+/* Description */
+.stats-grid small,
+.stats-grid > p:last-child {
+    display: block;
+
+    color: rgba(242,240,234,.62);
+    font-size: 12px;
+    line-height: 1.5;
+
+    max-width: 150px;
+}
+
+/* =========================================================
+   ACCENT DETAIL
+========================================================= */
+
+/* Red indicator above each stat */
+.stats-grid > *::before {
+    content: "";
+    position: absolute;
+
+    top: -1px;
+    left: 0;
+
+    width: 28px;
+    height: 2px;
+
+    background: var(--accent);
+
+    transition:
+        width .35s ease,
+        box-shadow .35s ease;
+}
+
+/* Hover without creating a box */
+.stats-grid > *:hover::before {
+    width: 55px;
+    box-shadow: 0 0 14px rgba(193,18,31,.55);
+}
+
+.stats-grid > *:hover strong {
+    transform: translateX(3px);
+}
+
+.stats-grid strong {
+    transition: transform .3s ease;
+}
+
+
+/* =========================================================
+   DASHBOARD HEADING
+========================================================= */
+
+.section-heading {
+    position: relative;
+
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+
+    margin-bottom: 10px;
+}
+
+.section-heading .eyebrow {
+    color: var(--accent);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: .2em;
+    margin-bottom: 14px;
+}
+
+.section-heading h2 {
+    color: var(--light);
+    font-size: clamp(38px, 5vw, 68px);
+    font-weight: 900;
+    line-height: .95;
+    letter-spacing: -.055em;
+
+    max-width: 800px;
+}
+
+/* Thin detail beside heading */
+.section-heading::after {
+    content: "REDLINE / GARAGE";
+
+    display: block;
+
+    margin-top: 25px;
+
+    color: rgb(0, 0, 0);
+    font-size:12px;
+    font-weight: 800;
+    letter-spacing: .2em;
+}
+
+
+/* =========================================================
+   PAGE TEXT
+========================================================= */
+
+.hero-content,
+.hero-description,
+.eyebrow,
+.small-label,
+.live-status {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+
+/* =========================================================
+   ACCOUNT TEXT — KEEP IT CLEAN
+========================================================= */
+
+.account-card {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+
+    padding: 20px 0 !important;
+}
+
+
+/* =========================================================
+   REDLINE GARAGE
+   LARGE + HIGH-READABILITY DASHBOARD
+   No text boxes / no black containers
+========================================================= */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 48px;
+    position: relative;
+}
+
+/* Top guide line */
+.stats-grid::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+
+    background: rgba(20, 20, 20, .22);
+}
+
+
+/* =========================================================
+   STAT ITEMS
+========================================================= */
+
+.stats-grid > * {
+    position: relative;
+
+    min-height: 190px;
+
+    padding: 38px 42px 30px 0 !important;
+
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+}
+
+
+/* Vertical separators */
+.stats-grid > *:not(:last-child)::after {
+    content: "";
+
+    position: absolute;
+
+    top: 38px;
+    right: 32px;
+
+    width: 1px;
+    height: 120px;
+
+    background: rgba(0, 0, 0, 0.18);
+}
+
+
+/* =========================================================
+   SMALL CATEGORY
+========================================================= */
+
+.stats-grid span,
+.stats-grid > p:first-child {
+
+    display: block;
+
+    color: #000000;
+
+    font-size: 18px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+    letter-spacing: .14em;
+
+    line-height: 1.3;
+
+    margin: 0 0 9px;
+}
+
+
+/* =========================================================
+   BIG NUMBER
+========================================================= */
+
+.stats-grid strong {
+
+    display: block;
+
+    color: #111111;
+
+    font-size: clamp(42px, 5vw, 64px);
+
+    font-weight: 900;
+
+    line-height: .9;
+
+    letter-spacing: -.065em;
+
+    margin: 0 0 24px;
+
+    text-shadow: none;
+
+    transition: transform .3s ease;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.stats-grid small,
+.stats-grid > p:last-child {
+
+    display: block;
+
+    color: #000000;
+
+    font-size: 18px;
+
+    font-weight: 500;
+
+    line-height: 1.55;
+
+    max-width: 190px;
+}
+
+
+/* =========================================================
+   RED ACCENT
+========================================================= */
+
+.stats-grid > *::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -1px;
+    left: 0;
+
+    width: 34px;
+    height: 3px;
+
+    background: var(--accent);
+
+    transition:
+        width .3s ease,
+        box-shadow .3s ease;
+}
+
+
+.stats-grid > *:hover::before {
+
+    width: 65px;
+
+    box-shadow:
+        0 0 12px rgba(193, 18, 31, .4);
+}
+
+
+.stats-grid > *:hover strong {
+    transform: translateX(4px);
+}
+
+
+/* =========================================================
+   MAIN HEADING
+========================================================= */
+
+.section-heading {
+
+    position: relative;
+
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+
+    margin-bottom: 12px;
+}
+
+
+.section-heading .eyebrow {
+
+    color: #000000;
+
+    font-size: 15px;
+
+    font-weight: 900;
+
+    letter-spacing: .2em;
+
+    margin-bottom: 16px;
+}
+
+
+.section-heading h2 {
+
+    color: #111111;
+
+    font-size: clamp(46px, 6vw, 78px);
+
+    font-weight: 900;
+
+    line-height: .92;
+
+    letter-spacing: -.06em;
+
+    max-width: 900px;
+}
+
+
+/* Small design label */
+.section-heading::after {
+
+    content: "REDLINE / GARAGE";
+
+    display: block;
+
+    margin-top: 28px;
+
+    color: #100f0f;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    letter-spacing: .2em;
+}
+
+
+/* =========================================================
+   GENERAL TEXT READABILITY
+========================================================= */
+
+.hero-content,
+.hero-description,
+.eyebrow,
+.small-label,
+.live-status {
+
+    background: transparent !important;
+
+    border: 0 !important;
+
+    box-shadow: none !important;
+}
+
+
+/* Body descriptions */
+.hero-description {
+
+    color: #000000 !important;
+
+    font-size: 19px;
+
+    line-height: 1.7;
+
+    max-width: 650px;
+}
+
+
+/* =========================================================
+   ACCOUNT / INFORMATION TEXT
+========================================================= */
+
+.account-card {
+
+    background: transparent !important;
+
+    border: 0 !important;
+
+    border-radius: 0 !important;
+
+    box-shadow: none !important;
+
+    backdrop-filter: none !important;
+
+    padding: 16px 0 !important;
+}
+
+
+/* =========================================================
+   FORM CARD
+========================================================= */
+
+.form-card {
+
+    background: transparent !important;
+
+    border: 0 !important;
+
+    box-shadow: none !important;
+
+    backdrop-filter: none !important;
+}
+
+
+/* =========================================================
+   IMPORTANT
+   GAME IS NOT MODIFIED
+========================================================= */
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .stats-grid {
+
+        grid-template-columns: repeat(2, 1fr);
+
+        row-gap: 0;
+    }
+
+    .stats-grid > * {
+
+        min-height: 180px;
+
+        padding-right: 16px !important;
+    }
+
+    .stats-grid > *:nth-child(2)::after {
+
+        display: none;
+    }
+
+    .stats-grid > *:nth-child(3)::after {
+
+        display: block;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 620px) {
+
+    .stats-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid > * {
+
+        min-height: auto;
+
+        padding: 30px 0 !important;
+    }
+
+    .stats-grid > *::after {
+
+        display: none !important;
+    }
+
+    .stats-grid > *:not(:last-child) {
+
+        border-bottom:
+            1px solid rgba(0, 0, 0, 0.14) !important;
+    }
+
+    .stats-grid strong {
+
+        font-size: 48px;
+    }
+
+    .stats-grid span {
+
+        font-size: 20px;
+    }
+
+    .stats-grid small {
+
+        font-size: 29px;
+    }
+
+    .section-heading h2 {
+
+        font-size: 46px;
+    }
+
+}
+
+/* =========================================================
+   ACCOUNT AREA — FINAL CONTAINER FIX
+   ========================================================= */
+
+/* Account section layout */
+.account-grid {
+    width: 100%;
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 18px !important;
+    align-items: stretch;
+}
+
+/* =========================================================
+   LARGE PROFILE CONTAINER
+   ========================================================= */
+
+.profile-card {
+    grid-column: 1 / -1 !important;
+
+    width: 100% !important;
+
+    display: flex !important;
+    align-items: center !important;
+    gap: 20px !important;
+
+    padding: 28px !important;
+
+    background: rgba(26, 26, 26, 0.82) !important;
+
+    border: 1px solid rgba(242, 240, 234, 0.14) !important;
+
+    border-radius: 20px !important;
+
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4) !important;
+
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+}
+
+/* Profile avatar */
+.profile-card .avatar {
+    flex-shrink: 0;
+
+    width: 64px !important;
+    height: 64px !important;
+
+    display: grid !important;
+    place-items: center !important;
+
+    background: #C1121F !important;
+    color: #F2F0EA !important;
+
+    border-radius: 50% !important;
+
+    font-size: 26px !important;
+    font-weight: 900 !important;
+}
+
+/* Profile information */
+.profile-card .profile-info {
+    flex: 1;
+}
+
+/* Profile category */
+.profile-card .small-label,
+.profile-card .eyebrow {
+    color: #8A8A8A !important;
+}
+
+/* Profile name */
+.profile-card h3,
+.profile-card h2,
+.profile-card strong {
+    color: #F2F0EA !important;
+}
+
+/* Profile email */
+.profile-card p {
+    color: #F2F0EA !important;
+}
+
+/* Profile buttons */
+.profile-card .account-actions {
+    display: flex !important;
+    gap: 12px !important;
+
+    margin-left: auto !important;
+
+    flex-shrink: 0;
+}
+
+.account-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.account-card {
+    background: #1A1A1A;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 24px;
+    padding: 28px;
+    min-height: 150px;
+    box-sizing: border-box;
+    color: #F2F0EA;
+}
+
+.account-card .eyebrow {
+    color: #000000;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    margin-bottom: 15px;
+}
+
+.account-card h3 {
+    color: #000000;
+    margin: 0 0 8px;
+    font-size: 30px;
+}
+
+.account-card p {
+    color: #000000;
+}
+
+@media (max-width: 700px) {
+    .account-stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Mobile */
+@media (max-width: 800px) {
+    .account-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 620px) {
+
+    .account-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .profile-card {
+        grid-column: 1 !important;
+
+        flex-wrap: wrap !important;
+
+        align-items: flex-start !important;
+    }
+
+    .profile-card .account-actions {
+        width: 100% !important;
+
+        margin-left: 0 !important;
+    }
+
+    .profile-card .account-actions .btn {
+        flex: 1;
+    }
+
+}
+
+/* ========================================= 
+   MONSTER TRUCK GAME - EMBEDDED
+========================================= */
+
+.monster-truck-embed {
+    position: relative;
+    width: 100%;
+    min-height: 750px;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,.4);
+}
+
+.monster-truck-embed {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 1;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(0,0,0,.4);
+}
+
+.game-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    font-family: 'Courier New', monospace;
+    background: #000;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.menu {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(0,0,0,0.92), rgba(30,30,30,0.85));
+}
+
+.menu-box {
+    width: 90%;
+    max-width: 400px;
+    padding: 30px;
+    text-align: center;
+    background: rgba(10,10,10,0.92);
+    border: 3px solid white;
+    box-shadow: 0 0 30px rgba(255,255,255,0.15);
+    border-radius: 8px;
+}
+
+.logo {
+    font-size: clamp(32px, 6vw, 60px);
+    font-weight: 900;
+    color: white;
+    line-height: 0.85;
+    transform: skew(-8deg);
+}
+
+.logo span {
+    display: block;
+    color: #ff3b30;
+    text-shadow: 4px 4px 0 #111;
+}
+
+.subtitle {
+    margin-top: 12px;
+    color: #d4af37;
+    letter-spacing: 4px;
+    font-size: 13px;
+}
+
+.main-button {
+    margin-top: 20px;
+    padding: 12px 40px;
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: #c8102e;
+    border: 3px solid white;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: transform 0.15s, background 0.15s;
+}
+
+.main-button:hover {
+    background: #e0132f;
+    transform: scale(1.06);
+}
+
+.main-button:active {
+    transform: scale(0.96);
+}
+
+.controls {
+    margin-top: 20px;
+    color: #bbb;
+    line-height: 1.6;
+    font-size: 11px;
+}
+
+.garage {
+    width: 95%;
+    max-width: 700px;
+    padding: 20px;
+    text-align: center;
+}
+
+.garage h1 {
+    margin-bottom: 20px;
+    color: white;
+    font-size: clamp(18px, 4vw, 28px);
+    letter-spacing: 3px;
+}
+
+.car-list {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.car-card {
+    width: 250px;
+    padding: 15px;
+    background: rgba(0,0,0,0.8);
+    border: 2px solid #555;
+    border-radius: 6px;
+    transition: transform 0.2s, border 0.2s;
+    cursor: pointer;
+}
+
+.car-card:hover {
+    transform: translateY(-6px);
+    border-color: white;
+}
+
+.car-card.selected {
+    border: 3px solid #d4af37;
+    box-shadow: 0 0 20px rgba(255,209,102,0.25);
+}
+
+.car-card h2 {
+    color: white;
+    font-size: 14px;
+    margin: 8px 0;
+}
+
+.car-card p {
+    color: #aaa;
+    font-size: 11px;
+}
+
+.car-preview {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 55px;
+    border-bottom: 2px solid #333;
+    margin-bottom: 8px;
+}
+
+.red-car {
+    background: linear-gradient(135deg, #601018, #c8102e);
+}
+
+.blue-car {
+    background: linear-gradient(135deg, #102a56, #277da1);
+}
+
+.green-car {
+    background: linear-gradient(135deg, #123d24, #2a9d8f);
+}
+
+.select-car {
+    padding: 6px 20px;
+    background: #222;
+    color: white;
+    border: 1px solid white;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.car-card.selected .select-car {
+    background: #d4af37;
+    color: #111;
+}
+
+.hud {
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    right: 16px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: white;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+    z-index: 2;
+    pointer-events: none;
+}
+
+#gameCanvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    touch-action: manipulation;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(0,0,0,0.55);
+    z-index: 3;
+}
+
+#overlayAnim {
+    width: 80px;
+    height: 80px;
+    border: none;
+}
+
+#overlayText {
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    background: rgba(0,0,0,0.6);
+    padding: 10px 16px;
+    border: 2px solid white;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.small-button {
+    padding: 8px 20px;
+    background: #222;
+    color: white;
+    border: 2px solid white;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.small-button:hover {
+    background: #444;
+}
